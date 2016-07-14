@@ -1,8 +1,8 @@
 package com.androidcycle.custommediacontroller;
 
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -17,8 +17,9 @@ import static android.content.ContentValues.TAG;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
+    private PhoneWindowMediaController mMediaController;
 
-    private MyMediaController mMediaController;
+//    private MyMediaController mMediaController;
 
     public MainActivityFragment() {
     }
@@ -32,7 +33,8 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ViewGroup root = (ViewGroup) view.findViewById(R.id.controller_root);
+//        ViewGroup root = (ViewGroup) view.findViewById(R.id.controller_root);
+        View root = view.findViewById(R.id.content_main);
         root.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -54,7 +56,8 @@ public class MainActivityFragment extends Fragment {
                 return mMediaController.dispatchKeyEvent(event);
             }
         });
-        mMediaController = new MyMediaController(getActivity());
+        mMediaController = new PhoneWindowMediaController(getActivity());
+//        mMediaController = new MyMediaController(getActivity());
         mMediaController.setAnchorView(root);
         mMediaController.setMediaPlayer(new MediaController.MediaPlayerControl() {
             private int currentPosition;
@@ -126,6 +129,7 @@ public class MainActivityFragment extends Fragment {
                 return 0;
             }
         });
+        mMediaController.setEnabled(true);
     }
 
     private void toggleControlsVisibility() {

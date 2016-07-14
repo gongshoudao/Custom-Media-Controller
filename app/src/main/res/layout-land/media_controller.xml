@@ -14,11 +14,12 @@
      limitations under the License.
 -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layoutDirection="ltr"
+              android:background="#BF000000"
                 android:orientation="vertical">
 
     <LinearLayout
@@ -93,4 +94,4 @@
             android:textSize="14sp"/>
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
