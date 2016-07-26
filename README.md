@@ -25,13 +25,13 @@ mAccessibilityManager = AccessibilityManager.getInstance(context);
 mWindow = new PhoneWindow(mContext);
 ```
 两处代码。
-### 解决第一处
+#### 解决第一处
    AccessibilityManager对象可以通过
 ```java
 (AccessibilityManager) context.getSystemService(Context.ACCESSIBILITY_SERVICE);
 ```
    获取到
-### 解决第二处
+#### 解决第二处
 这里稍微麻烦些，因为PhoneWindow是hide的
 ```java
 /**
@@ -46,7 +46,7 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
     ·····
 }
 ```
-    需要用到反射，但也是很简单的。如下：
+需要用到反射，但也是很简单的。如下：
     
 ```java
 private void createPhoneWindow(Context mContext) {
@@ -76,5 +76,5 @@ private void createPhoneWindow(Context mContext) {
 ```
     这样顺利的拿到了Window对象，当然获取window的方式有很多种。
 ##注意
-    关注最新版本的Android源代码，看PhoneWindow的构造器或包名是否发生变化。不过一般不会变。
+关注最新版本的Android源代码，看PhoneWindow的构造器或包名是否发生变化。不过一般不会变。
     
